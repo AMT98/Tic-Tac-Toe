@@ -69,12 +69,19 @@ let currentPlayer = playerX;
 let box = Array(9).fill(null)
 let boxes = document.querySelectorAll(".box")
 let msg2 = document.getElementById('msg2')
+let msg3 = document.getElementById('msg3')
+let scorePone = document.getElementById("playerOneScore")
+let scorePtwo = document.getElementById("playerTwoScore")
 
 const startGame = () =>{
     for (let i =0; i < boxes.length; i++){
         boxes[i].addEventListener('click',boxClicked)
     }
 }
+
+let playerOneScore = 0;
+let playerTwoScore = 0;
+
 function boxClicked(e){
     let boxNo = e.target.id
     if(box[boxNo] === null){
@@ -92,7 +99,30 @@ function boxClicked(e){
             playerTwo.style.color = "none"
         }
         if(winGame() !== false){
-            msg2.innerText= `You win!`
+            if(currentPlayer !== playerO){
+                msg3.innerText = `You win!`
+                msg3.style.backgroundColor = "gray"
+                msg2.style.backgroundColor = "black"
+                msg2.innerText= "Score"
+                board.style.pointerEvents = "none"
+                playerTwo.style.background = "none"
+                playerOne.style.background = "none"
+                playerTwoScore++
+                scorePtwo.innerText = playerTwoScore
+                
+            }
+            else if(currentPlayer !== playerX){
+                msg2.innerText= `You win!`
+                msg2.style.backgroundColor = "gray"
+                msg3.style.backgroundColor = "black"
+                msg3.innerText = `Score`
+                board.style.pointerEvents = "none"
+                playerOne.style.background = "none"
+                playerTwo.style.background = "none"
+                playerOneScore++
+                scorePone.innerText = playerOneScore
+                
+            }
             return;
         }
     }
@@ -100,7 +130,6 @@ function boxClicked(e){
 }
 
 function winGame(){
-    console.log(box)
     if(box[0] && box[0] == box[1] && box[1] == box[2]){
         return;
     }
@@ -125,22 +154,33 @@ function winGame(){
     if(box[2] && box[2] == box[4] && box[4] == box[6]){
         return;
     }
+    // if(box[0] !== box[1] !== box[2] !== box[3] !== box[4] !== box[5] !== box[6] !== box[7] !==box[8]){
+    //     msg2.innerText =`It's a draw!`
+    // }
     else{
         return false;
     }
 }
 winGame();
 
-// if(!box[0],!box[1],!box[2],!box[3],!box[4],!box[5],!box[6],!box[7],!box[8]){
-//     msg2.innerText =`It's a draw!`
-// }
 
-// let resetBtn = document.getElementById('resetBtn')
+let resetBtn = document.getElementById('resetBtn')
 
-// resetBtn.addEventListener('click', resetBoard)
+resetBtn.addEventListener('click', resetBoard)
 
-// function resetBoard(){
-// for (let i=0; i<boxes.length; i++){
-//     boxes[i].innerText = ""
-// }
-// }
+function resetBoard(){
+box.fill(null)
+for (let i=0; i<boxes.length; i++){
+    boxes[i].innerText = ""
+}
+board.style.pointerEvents = "all"
+msg2.style.backgroundColor = "black"
+msg3.style.backgroundColor = "black"
+if(currentPlayer == playerX){
+playerTwo.style.backgroundColor = "black"
+playerOne.style.backgroundColor = "gray"
+}else{
+    playerOne.style.backgroundColor = "black"
+    playerTwo.style.backgroundColor = "gray"
+}
+}
