@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&family=Press+Start+2P&display=swap" rel="stylesheet">  </head>
+  <body>
+    <main>
+      <section id="form">
+        <h2 id="msg1">Let's play Tic Tac Toe!</h2>
+        <div id="noOfPlayers">
+          <button id="onePlayerBtn">1 Player</button>
+          <button id="twoPlayerBtn">2 Players</button>
+        </div>
+
+        <div id="oneOrTwoPlayers">
+          <input
+            type="text"
+            name="name"
+            placeholder="Player 1"
+            maxlength="10"
+            id="playerOneName"
+          />
+          <input
+            type="text"
+            name="name"
+            placeholder="Player 2"
+            maxlength="10"
+            id="playerTwoName"
+          />
+          <br />
+        </div>
+          <button id="submitBtn">Submit</button>
+      </section>
+      <section>
+        <h1 id="header">Tic Tac Toe</h1>
+        <hr />
+      </section>
+      <div id="board">
+        <button class="box" id="0"></button>
+        <button class="box" id="1"></button>
+        <button class="box" id="2"></button>
+        <button class="box" id="3"></button>
+        <button class="box" id="4"></button>
+        <button class="box" id="5"></button>
+        <button class="box" id="6"></button>
+        <button class="box" id="7"></button>
+        <button class="box" id="8"></button>
+      </div>
+      <hr />
+      <div id="info">
+        <div id="playerOneInfo">
+          <p id="playerOne">Player 1</p>
+          <p id="msg2">Score</p>
+          <p id="playerOneScore">0</p>
+        </div>
+        <button id="resetBtn" title="Click to play again">Play again</button>
+        <div id="playerTwoInfo">
+          <p id="playerTwo">Player 2</p>
+          <p>Score</p>
+          <p id="playerTwoScore">0</p>
+        </div>
+      </div>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
+
+<!-- TIC-TAC-TOE
+As users playing a two player game we want to:
+
+enter our names and have them displayed CHECK
+have our order chosen for us by the game CHECK
+take turns placing our marks in empty spaces CHECK
+not be able to place our marks in an occupied space CHECK
+be told when a move causes a player to win, or to draw
+start the game over without having to reset the browser
+
+As a user playing a one player game I want to:
+
+see the name 'Computer' displayed as my opponent
+have the Computer player make moves as if it were a human player with the correct mark in an empty space
+
+As a user playing a single player game I would be delighted to:
+
+have the Computer make 'better-than-guessing' choices when placing a mark on the board
+set the board size myself ("wider" or "taller" than 3x3) -->
+
+
+
+
+
+
+<!-- Figure out how to assign X and O's to player 1 and player 2 then switch.
+when switching, change the bg color of the player 1 and player 2 to showcase whose turn it is
+Loop through the board to set conditions to if empty and clicked fill it with X or O
+figure out how to showcase the winner and increment the score 
+maybe add audio or gif to showcase winner 
+clear the board but keep the Scores incremented -->
+
+
+<!-- https://i.gifer.com/6jdy.gif -->

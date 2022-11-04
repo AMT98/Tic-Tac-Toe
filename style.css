@@ -1,0 +1,201 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+body{
+    background-color: black;
+    color: white;
+    align-content: center;
+
+}
+hr{
+    width: 600px;
+    margin: 0 auto;
+    color: white;
+    margin-bottom: 20px;
+}
+#header{
+    text-align: center;
+    font-size: 55px;
+    margin: 1.5rem 0rem;
+
+}
+
+#board{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    width: 600px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    pointer-events: none;
+}
+
+.box{
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 180px;
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.box:hover{
+    background-color: rgb(129, 129, 129);
+}
+
+#form {
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 600px;
+    max-width: 80%;
+    border: 1px solid white;
+    border-radius: 10px;
+    color: black;
+    text-align: center;
+    background-color: gray;
+    display: none;
+    z-index: 10;
+    transition: 2s ease-in-out;
+}
+#form > h2 {
+    margin: 10px 0;
+    text-decoration: underline white;
+}
+#playerOneName{
+    display: none;
+}
+#playerTwoName{
+    display: none;
+}
+#onePlayerBtn, #twoPlayerBtn, #playerOneName, #playerTwoName, #submitBtn{
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    margin: 15px;
+    
+}
+#onePlayerBtn, #twoPlayerBtn, #submitBtn{
+    cursor:pointer;
+}
+#submitBtn{
+    background-color: white;
+    color: black;
+}
+#submitBtn:hover, #onePlayerBtn:hover, #twoPlayerBtn:hover{
+    transform: scale(1.05);
+    transition: 0.25s;
+}
+
+
+#info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    margin: 0 auto;
+    border: 1px solid white;
+    pointer-events: none;
+}
+#playerOneInfo, #resetBtn, #playerTwoInfo{
+    border: 1px solid white;
+    flex: 1;
+    text-align: center;
+    font-size: 19px;
+    height: 150px;
+    margin: 10px;
+}
+#playerOneInfo > p:nth-child(1), p:nth-child(2) {
+    padding: 10px;
+    border-bottom: 1px solid white;
+}
+#playerOneScore, #playerTwoScore{
+    padding-top: 15px;
+}
+#playerTwoInfo > p:nth-child(1), p:nth-child(2)  {
+    padding: 10px;
+    border-bottom: 1px solid white;
+}
+#resetBtn{
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+#resetBtn:hover{
+    font-weight: bolder;
+    background-color: white;
+    color: black;
+    transform: scale(1.10);
+    transition: 0.10s;
+}
+@media only screen and (max-width: 600px) {
+    hr{
+        width: 350px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+    #header{
+        font-size: 32px;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+    #board{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 350px;
+        width: 350px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+    .box{
+        height: 116.67px;
+        width: 116.67px;
+        border-radius: 10px;
+        font-size: 100px;
+
+    }
+    #form{
+        width: 350px;
+        max-width: 100%;
+        font-weight: normal;
+        font-size: 20px;
+    }
+    #form > h2{
+        font-size: 15px;
+    }
+    #onePlayerBtn, #twoPlayerBtn, #playerOneName, #playerTwoName, #submitBtn{
+        font-size: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        margin: 10px;
+        
+    }
+    #info{
+        width: 350px;
+        margin: 0 auto;
+    }
+    #playerOneInfo, #resetBtn, #playerTwoInfo{
+        flex: 1;
+        font-size: 20px;
+        height: 150px;
+        margin: 2px;
+    }
+    #resetBtn{
+        border-radius: 25px;
+        font-size: 15px;
+    }
+}
