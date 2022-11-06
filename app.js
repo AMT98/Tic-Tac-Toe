@@ -11,46 +11,74 @@ let onePlayerBtn = document.getElementById("onePlayerBtn")
 let twoPlayerBtn = document.getElementById("twoPlayerBtn")
 let playerOneName = document.getElementById("playerOneName")
 let playerTwoName = document.getElementById("playerTwoName")
-
-const onlyTwo = twoPlayerBtn.addEventListener('click', function(){
-    playerOneName.style.display = "inline-block"
-    playerTwoName.style.display = "inline-block"
-    playerOneName.focus()
-});
-
-const onlyOne = onePlayerBtn.addEventListener('click', function(){
+let gameMode;
+onePlayerBtn.addEventListener('click', function(){
     playerOneName.style.display = "inline-block"
     playerTwoName.style.display = "none"
     playerOneName.focus()
+    gameMode = "1 Player"
 });
+twoPlayerBtn.addEventListener('click', function(){
+    playerOneName.style.display = "inline-block"
+    playerTwoName.style.display = "inline-block"
+    playerOneName.focus()
+    gameMode = "2 Players"
+});
+
 let playerOne = document.getElementById("playerOne")
 let playerTwo = document.getElementById("playerTwo")
 let msg1 = document.getElementById("msg1")
 let submitBtn = document.getElementById("submitBtn")
-
-submitBtn.addEventListener('click', function(){
+const singlePlayer = () =>{
     let nameOne = playerOneName.value
     let nameTwo = playerTwoName.value
-    
     if(nameOne === ""){
-            msg1.innerText = "Enter player name"
-        }
+        msg1.innerText = "Enter player name"
+    }
     else{
-            if(nameOne){
-                playerOne.innerText = nameOne
-            }
-            if(nameTwo){
-                playerTwo.innerText = nameTwo
-            }
-            form.style.display = "none"
-            board.style.opacity = "1"
-            info.style.opacity = "1"
-            board.style.pointerEvents = "all"
-            info.style.pointerEvents = "all"
-        }  
+        if(nameOne){
+            playerOne.innerText = nameOne
+        } 
+        if(nameTwo.length === 0){
+            
+            playerTwo.innerText = "Computer"
+        }
+        form.style.display = "none"
+        board.style.opacity = "1"
+        info.style.opacity = "1"
+        board.style.pointerEvents = "all"
+        info.style.pointerEvents = "all"
         playerOne.style.background = "gray"
         startGame()
-})
+    }
+}  
+
+
+const multiPlayer = () =>{ 
+    let nameOne = playerOneName.value
+    let nameTwo = playerTwoName.value
+    if(nameOne === "" || nameTwo === ""){
+        msg1.innerText = "Enter player name"
+    }else{
+        if(nameOne){
+            playerOne.innerText = nameOne
+        }
+        if(nameTwo){
+            playerTwo.innerText = nameTwo
+        }  
+        form.style.display = "none"
+        board.style.opacity = "1"
+        info.style.opacity = "1"
+        board.style.pointerEvents = "all"
+    info.style.pointerEvents = "all"
+    playerOne.style.background = "gray"
+    startGame()
+}  
+
+}
+const handleSubmit = () => gameMode === "1 Player" ? singlePlayer() : multiPlayer();
+
+submitBtn.addEventListener('click',handleSubmit)
 
 playerOneName.addEventListener('keyup', function (e) {
     if (e.keyCode == 13) {
@@ -115,13 +143,9 @@ function boxClicked(e){
             playerTwo.style.background = "none"
             playerTwo.style.color = "none"
         }
-        if(box[0] && box[1] && box[2] && box[3] && box[4] && box[5] && box[6] && box[7] && box[8]){
-            msg2.innerText =`It's a draw!`
-            msg3.innerText =`It's a draw!`
-            board.style.pointerEvents = "none"
-            setTimeout(draw,500)
-            setInterval(hide,3000)
-        }
+
+
+        drawGame()
         if(winGame() !== false){
             
             if(currentPlayer !== playerO){
@@ -159,14 +183,23 @@ function boxClicked(e){
 }
 
 //winning boxes = 
-// [0,1,2]
-// [3,4,5]
-// [6,7,8]
-// [0,3,6]
-// [1,4,7]
-// [2,5,8]
-// [0,4,8]
-// [2,4,6]
+// [0,1,2]row
+// [3,4,5]row
+// [6,7,8]row
+// [0,3,6]column
+// [1,4,7]column
+// [2,5,8]column
+// [0,4,8]diagonally 
+// [2,4,6]anti-diagonally 
+function drawGame(){
+    if(box[0] && box[1] && box[2] && box[3] && box[4] && box[5] && box[6] && box[7] && box[8]){
+        msg2.innerText =`It's a draw!`
+        msg3.innerText =`It's a draw!`
+        board.style.pointerEvents = "none"
+        setTimeout(draw,500)
+        setInterval(hide,3000)
+    }
+}
 
 function winGame(){
     if(box[0] && box[0] == box[1] && box[1] == box[2]){
@@ -197,7 +230,6 @@ function winGame(){
         return false;
     }
 }
-winGame();
 
 
 let resetBtn = document.getElementById('resetBtn')
