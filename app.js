@@ -40,6 +40,8 @@ const form2 = document.getElementById("form2")
 
 let resetBtn = document.getElementById('resetBtn')
 
+let menuBtn = document.getElementById('menuBtn')
+
 let gameMode;
 
 let playerX = "X";
@@ -151,71 +153,71 @@ submitBtn.addEventListener('click',handleSubmit)
 
 
 playerOneName.addEventListener('keyup', function (e) {
-
+    
     if (e.keyCode == 13) {
-
+        
         submitBtn.click()
     }
 });
 
 
 playerTwoName.addEventListener('keyup', function (e) {
-
+    
     if (e.keyCode == 13) {
-
+        
         submitBtn.click()
-
+        
     }
 });
 
 function draw(){
-
+    
     form2.style.display = "block"
-
+    
     winMessage.innerText = `It's a draw!!`
-
+    
 }
 
 
 function player1Won(){
-
+    
     form2.style.display = "block"
-
+    
     winMessage.innerText = `${playerOne.innerText} wins!!!`
-
+    
 }
 
 
 function player2Won(){
-
+    
     form2.style.display = "block"
-
+    
     winMessage.innerText = `${playerTwo.innerText} wins!!!`
-
+    
 }
 
 
 function hideForm2(){
-
+    
     form2.style.display = "none"
 }
 
 
 const startGame = () =>{
-
+    
     for (let i =0; i < boxes.length; i++){
-
-        boxes[i].addEventListener('click',boxClickedSinglePlayer)
-
+        
+        boxes[i].addEventListener('click',handleStartGame)
+        
     }
 }
 
-
+const handleStartGame = (e) => gameMode === "singlePlayer" ? boxClickedSinglePlayer(e) : boxClickedMultiPlayer(e);
 
 function boxClickedMultiPlayer(e){
-
+    
     let boxNo = e.target.id
-
+    
     if(box[boxNo] === null){
         box[boxNo] = currentPlayer;    
         e.target.innerText = currentPlayer
@@ -225,14 +227,14 @@ function boxClickedMultiPlayer(e){
             playerTwo.style.background = "gray"
             playerOne.style.background = "none"
             playerOne.style.color = "none"
-
+            
         }else{
             currentPlayer = playerX
             playerOne.style.background = "gray"
             playerTwo.style.background = "none"
             playerTwo.style.color = "none"
         }
-
+        
         drawGame()
         checkWinningCombos()
     }
@@ -242,26 +244,28 @@ function boxClickedMultiPlayer(e){
 
 function boxClickedSinglePlayer (e){
     let boxNo = e.target.id
-
     if(box[boxNo] === null){
         box[boxNo] = currentPlayer;    
+        console.log(currentPlayer);
         e.target.innerText = currentPlayer
-        
-        if(currentPlayer == playerX){
+        if(currentPlayer === playerX){
             currentPlayer = playerO
-            playerOne.style.background = "gray"
-            playerTwo.style.background = "none"
-            playerTwo.style.color = "none"
+            console.log(currentPlayer);
             takeNextBestMove()
-            
-        }
-        else{
-            currentPlayer = playerX
             playerOne.style.background = "gray"
-            playerTwo.style.background = "none"
-            playerTwo.style.color = "none"
-        }
+        playerTwo.style.background = "none"
+        playerTwo.style.color = "none"
+        
     }
+    else{
+        currentPlayer = playerX
+        playerOne.style.background = "gray"
+        playerTwo.style.background = "none"
+        playerTwo.style.color = "none"
+        
+    }
+}
+    
     drawGame()
     checkWinningCombos()
 
@@ -270,31 +274,36 @@ function boxClickedSinglePlayer (e){
 const takeNextBestMove = () =>{
 
     let result = getNextBestMove()
+    if(winGame(box) === true){
+        return;
+    }else if(drawGame(box) === true){
+        return;
+    }
+    else{
 
         box[result] = currentPlayer
         boxes[result].innerHTML = currentPlayer
         currentPlayer = playerX
         
-    console.log(result);
+    }
 }
 function getNextBestMove(){
     for(let i=0; i<box.length; i++){
         var boxCopy = box.slice()
         boxCopy[i] = currentPlayer
-        console.log(i);
-        if(winGame(boxCopy)){
-            return i;
+        if(box[i] === null){
+            if(winGame(boxCopy)){
+                return i;
+            }
         }
     }
-    console.log(box);
     let boxArr = [];
     for (let i =0; i < boxes.length; i++){
         if(box[i] === null){
             boxArr += i
         }
     }
-    let randomIndex = boxArr[Math.floor(boxArr.length * Math.random())];
-    console.log(randomIndex);
+    var randomIndex = boxArr[Math.floor(boxArr.length * Math.random())];
     return randomIndex
 }
 
@@ -364,31 +373,30 @@ function drawGame(){
 }
 
 
-
 function winGame(xOrO){
     if(xOrO[0] && xOrO[0] == xOrO[1] && xOrO[1] == xOrO[2]){
-        return;
+        return true;
     }
     if(xOrO[3] && xOrO[3] == xOrO[4] && xOrO[4] == xOrO[5]){
-        return;
+        return true;
     }
     if(xOrO[6] && xOrO[6] == xOrO[7] && xOrO[7] == xOrO[8]){
-        return;
+        return true;
     }
     if(xOrO[0] && xOrO[0] == xOrO[3] && xOrO[3] == xOrO[6]){
-        return;
+        return true;
     }
     if(xOrO[1] && xOrO[1] == xOrO[4] && xOrO[4] == xOrO[7]){
-        return;
+        return true;
     }
     if(xOrO[2] && xOrO[2] == xOrO[5] && xOrO[5] == xOrO[8]){
-        return;
+        return true;
     }
     if(xOrO[0] && xOrO[0] == xOrO[4] && xOrO[4] == xOrO[8]){
-        return;
+        return true;
     }
     if(xOrO[2] && xOrO[2] == xOrO[4] && xOrO[4] == xOrO[6]){
-        return;
+        return true;
     }
     else{
         return false;
@@ -402,7 +410,7 @@ function resetBoard(){
     
     box.fill(null)
     
-    for (let i=0; i<boxes.length; i++){
+    for (var i=0; i<boxes.length; i++){
         boxes[i].innerText = ""
     }
     
@@ -422,7 +430,28 @@ function resetBoard(){
         playerOne.style.backgroundColor = "black"
         playerTwo.style.backgroundColor = "gray"
     }
+    if(currentPlayer === playerO){
+
+        takeNextBestMove()
+        currentPlayer = playerX
+    }
 }
 
 resetBtn.addEventListener('click', resetBoard)
 
+
+function openMenu(){
+    board.style.pointerEvents = "none"
+    formLoad()
+    submitBtn.addEventListener('click',handleSubmit)
+    box.fill(null)
+    
+    for (let i=0; i<boxes.length; i++){
+        boxes[i].innerText = ""
+    }
+    playerOneScore = 0
+    playerTwoScore = 0
+    scorePtwo.innerText = playerTwoScore
+    scorePone.innerText = playerOneScore
+}
+menuBtn.addEventListener('click', openMenu)
