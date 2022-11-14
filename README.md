@@ -16,6 +16,6 @@ As a user playing a single player game I would be delighted to:
 have the Computer make 'better-than-guessing' choices when placing a mark on the board
 
 Give it a go! 
-https://amt98.github.io/Tic-Tac-Toe/
+https://tikitak.netlify.app/
 
 ![Capture](https://user-images.githubusercontent.com/113475440/201560625-ebf7b0cf-cf37-4c16-9765-4317d770400e.PNG)
