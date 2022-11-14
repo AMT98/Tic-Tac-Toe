@@ -239,7 +239,7 @@ function checkWinner(){
             scorePtwo.innerText = playerTwoScore
             resetBtn.style.backgroundColor = "white"
             resetBtn.style.color = "black"
-            setTimeout(player2Won,500)
+            setTimeout(player2Won,1)
             setInterval(hideForm2,3000)
         }else if(currentPlayer !== playerX){
             msg2.innerText= `You win!`
@@ -253,22 +253,13 @@ function checkWinner(){
             scorePone.innerText = playerOneScore
             resetBtn.style.backgroundColor = "white"
             resetBtn.style.color = "black"
-            setTimeout(player1Won,500)
+            setTimeout(player1Won,1)
             setInterval(hideForm2,3000)
         }
         return;
     }
 }
 
-//winning boxes = 
-// [0,1,2]row
-// [3,4,5]row
-// [6,7,8]row
-// [0,3,6]column
-// [1,4,7]column
-// [2,5,8]column
-// [0,4,8]diagonally 
-// [2,4,6]anti-diagonally 
 function drawGame(){
     if(box[0] && box[1] && box[2] && box[3] && box[4] && box[5] && box[6] && box[7] && box[8]){
         msg2.innerText =`It's a draw!`
@@ -283,27 +274,67 @@ function drawGame(){
 
 function winGame(xOrO){
     if(xOrO[0] && xOrO[0] === xOrO[1] && xOrO[1] === xOrO[2]){
+        if(box [0] === box[1] && box[1] === box[2]){
+            boxes[0].style.color = "darkred"
+            boxes[1].style.color = "darkred"
+            boxes[2].style.color = "darkred"
+        }
         return true;
     }
     if(xOrO[3] && xOrO[3] === xOrO[4] && xOrO[4] === xOrO[5]){
+        if(box [3] === box[4] && box[4] === box[5]){
+            boxes[3].style.color = "darkred"
+            boxes[4].style.color = "darkred"
+            boxes[5].style.color = "darkred"
+        }
         return true;
     }
     if(xOrO[6] && xOrO[6] === xOrO[7] && xOrO[7] === xOrO[8]){
+        if(box [6] === box[7] && box[7] === box[8]){
+            boxes[6].style.color = "darkred"
+            boxes[7].style.color = "darkred"
+            boxes[8].style.color = "darkred"
+        }
         return true;
     }
     if(xOrO[0] && xOrO[0] === xOrO[3] && xOrO[3] === xOrO[6]){
+        if(box [0] === box[3] && box[3] === box[6]){
+            boxes[0].style.color = "darkred"
+            boxes[3].style.color = "darkred"
+            boxes[6].style.color = "darkred"
+        }
         return true;
     }
     if(xOrO[1] && xOrO[1] ===xOrO[4] && xOrO[4] === xOrO[7]){
+        if(box [1] === box[4] && box[4] === box[7]){
+            boxes[1].style.color = "darkred"
+            boxes[4].style.color = "darkred"
+            boxes[7].style.color = "darkred"
+        }
         return true;
     }
     if(xOrO[2] && xOrO[2] === xOrO[5] && xOrO[5] === xOrO[8]){
+        if(box [2] === box[5] && box[5] === box[8]){
+            boxes[2].style.color = "darkred"
+            boxes[5].style.color = "darkred"
+            boxes[8].style.color = "darkred"
+        }
         return true;
     }
     if(xOrO[0] && xOrO[0] === xOrO[4] && xOrO[4] === xOrO[8]){
+        if(box [0] === box[4] && box[4] === box[8]){
+            boxes[0].style.color = "darkred"
+            boxes[4].style.color = "darkred"
+            boxes[8].style.color = "darkred"
+        }
         return true;
     }
     if(xOrO[2] && xOrO[2] === xOrO[4] && xOrO[4] === xOrO[6]){
+        if(box [2] === box[4] && box[4] === box[6]){
+            boxes[2].style.color = "darkred"
+            boxes[4].style.color = "darkred"
+            boxes[6].style.color = "darkred"
+        }
         return true;
     }
     else{
@@ -314,6 +345,7 @@ function resetBoard(){
     box.fill(null)
     for (var i=0; i<boxes.length; i++){
         boxes[i].innerText = ""
+        boxes[i].style.color = "rgba(255, 255, 255, 0.815)"
     }
     board.style.pointerEvents = "all"   
     msg2.style.backgroundColor = "black"
