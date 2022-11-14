@@ -14,4 +14,8 @@ have the Computer player make moves as if it were a human player with the correc
 As a user playing a single player game I would be delighted to:
 
 have the Computer make 'better-than-guessing' choices when placing a mark on the board
+
+Give it a go! 
+https://amt98.github.io/Tic-Tac-Toe/
+
 ![Capture](https://user-images.githubusercontent.com/113475440/201560625-ebf7b0cf-cf37-4c16-9765-4317d770400e.PNG)
