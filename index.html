@@ -39,8 +39,8 @@
       </section>
       <section id="form2">
         <h3 id="playerWon"></h3>
-        <!-- <img id="img1" src="https://hibiscuspanda.files.wordpress.com/2015/09/lol.gif?w=200" alt="panda gif">
-        <img id="img2" src="https://thumbs.gfycat.com/DelectablePlayfulFlea-max-1mb.gif" alt="panda gif"> -->
+        <img id="img1" src="https://monophy.com/media/Y0xtyHetvfEBIk5FKh/monophy.gif" alt="x gif">
+        <img id="img2" src="https://i.pinimg.com/originals/0b/08/0a/0b080a3ad7b57a1461dc8acc162c2dd2.gif" alt="o gif">
       </section>
       <section>
         <h1 id="header">Tic Tac Toe</h1>
@@ -56,6 +56,7 @@
         <button class="box" id="6"></button>
         <button class="box" id="7"></button>
         <button class="box" id="8"></button>
+
       </div>
       <hr />
       <div id="info">
@@ -65,7 +66,7 @@
           <p id="playerOneScore">0</p>
         </div>
         <button id="resetBtn" title="Click to play again">Play again</button>
-        <button id="menuBtn" title="Open Main Menu">Menu</button>
+        <button id="resetScoreBtn" title="Click to reset game">Reset game</button>
         <div id="playerTwoInfo">
           <p id="playerTwo">Player 2</p>
           <p id="msg3">Score</p>
@@ -76,15 +77,6 @@
     <script src="app.js"></script>
   </body>
 </html>
-<!-- if x wins then change it so that player O doesnt put down their mark  check -->
-<!-- create a function where it chooses playerGame mode (single or multiplayer) -->
-<!-- maybeeeeee create a function where it checks if x is about to win and add "O" to that index to prevent winning. -->
-
-
-
-<!-- make a function where it guesses the next best move by looping through the board
-check if player 1's move is a move where they are about to win else,
-if a move causes the computer to win, place it, or random move. -->
 
 
 <!-- TIC-TAC-TOE
@@ -109,26 +101,8 @@ set the board size myself ("wider" or "taller" than 3x3) -->
 
 
 
-
-
-
-<!-- Figure out how to assign X and O's to player 1 and player 2 then switch.
-when switching, change the bg color of the player 1 and player 2 to showcase whose turn it is
-Loop through the board to set conditions to if empty and clicked fill it with X or O
-figure out how to showcase the winner and increment the score 
-maybe add audio or gif to showcase winner 
-clear the board but keep the Scores incremented -->
-
-<!-- 
-  1st function: window onload the form loads
-  2nd. submitbtn from the form clears the board if player names are entered
-  2b. selects the starting player by changing bg color to gray
-  3. showcase quick pop up with who won
-  4. startGame loops over the boxes and adds a event listener to each box
-  5. each box clicked adds x or o to the board in turn
-  5b. checks if its tied
-  5c. checks if the winning combo occured or not and displays who won
-  6. winGame function checks for all the possible winning combos
-  7. resetBtn onclick clears the board to start a new game and changes the bg color to gray of the player whose turn it is
-
--->
+<!-- to do list for today: 
+fix 2 player mode where its playerO's turn and wont put down O 
+change name of some functions to what makes sense 
+make it responsive for all devices
+make so the color of x or o changes when they win with the correct combo. -->

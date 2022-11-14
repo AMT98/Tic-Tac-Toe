@@ -10,7 +10,6 @@ body{
     background-color: black;
     color: white;
     align-content: center;
-
 }
 hr{
     width: 600px;
@@ -44,12 +43,15 @@ hr{
     border-radius: 10px;
     cursor: pointer;
     font-size: 180px;
+    background-color: black;
+    color: whitesmoke;
     padding-top: 15px;
     padding-left: 15px;
+    border-color: whitesmoke;
 }
 
 .box:hover{
-    background-color: rgb(129, 129, 129);
+    background-color: rgba(255, 255, 255, 0.384);
 }
 
 #form2 {
@@ -58,7 +60,6 @@ hr{
     left: 50%;
     transform: translate(-50%,-50%);
     width: 500px;
-    /* height: 170px; */
     max-width: 80%;
     font-size: 20px;
     text-decoration: underline;
@@ -71,10 +72,16 @@ hr{
     z-index: 10;
     transition: 2s ease-in-out;
 }
-img{
-    width: 100px;
-    height: 100px;
+#img1{
+    width: 120px;
+    height: 150px;
     margin-bottom: 20px;
+}
+#img2{
+    width: 90px;
+    height: 90px;
+    position: relative;
+    bottom: 60px;
 }
 
 #playerWon{
@@ -114,18 +121,20 @@ img{
     background-color: black;
     color: white;
     margin: 15px;
+    cursor:pointer;
+    transition: color .4s ease-in-out, box-shadow .4s ease-in-out;
     
 }
-#onePlayerBtn, #twoPlayerBtn, #submitBtn{
-    cursor:pointer;
-}
 #submitBtn{
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
+    box-shadow: inset 0 0 0 0 gray;
 }
 #submitBtn:hover, #onePlayerBtn:hover, #twoPlayerBtn:hover{
-    transform: scale(1.05);
-    transition: 0.25s;
+    transform: scale(1.10);
+    transition: 0.55s;
+    box-shadow: inset 200px 0 0 0 white;
+    color: black;
 }
 
 
@@ -152,14 +161,14 @@ img{
     border-radius: 5px;
     box-shadow: 1px 4px 10px;
 }
-#resetBtn, #menuBtn{
+#resetBtn, #resetScoreBtn{
     border: 1px solid white;
-    padding: 5px;
+    padding: 6px;
     flex: 1;
     text-align: center;
     font-size: 18px;
     height: 150px;
-    margin: 5px;
+    margin: 7px;
     border-top: transparent;
     border-left: transparent;
     border-bottom: transparent;
@@ -168,8 +177,16 @@ img{
     color: white;
     cursor: pointer;
     box-shadow: 1px 4px 10px;
-
+    transition: color .4s ease-in-out, box-shadow .4s ease-in-out;
 }
+
+#resetBtn:hover, #resetScoreBtn:hover{
+    font-weight: bolder;
+    color: gray;
+    transform: scale(1.10);
+    transition: 0.40s; 
+}
+
 #playerOneInfo > p:nth-child(1), p:nth-child(2) {
     padding: 10px;
     border-bottom: 1px solid white;
@@ -182,13 +199,6 @@ img{
     border-bottom: 1px solid white;
 }
 
-#resetBtn:hover, #menuBtn:hover{
-    font-weight: bolder;
-    /* background-color: white; */
-    color: gray;
-    transform: scale(1.10);
-    transition: 0.10s;
-}
 
 @media only screen and (max-width: 600px) {
     hr{
