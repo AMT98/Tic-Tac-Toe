@@ -24,6 +24,7 @@ As a user playing a single player game I would be delighted to:
 1.Have the Computer make 'better-than-guessing' choices when placing a mark on the board
 
 Give it a go! 
+
 Netlify deployed link: 
 https://tikitak.netlify.app/
 
