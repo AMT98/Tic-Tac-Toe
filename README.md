@@ -26,6 +26,7 @@ As a user playing a single player game I would be delighted to:
 Give it a go! 
 
 Netlify deployed link: 
+
 https://tikitak.netlify.app/
 
 ![Capture](https://user-images.githubusercontent.com/113475440/201560625-ebf7b0cf-cf37-4c16-9765-4317d770400e.PNG)
