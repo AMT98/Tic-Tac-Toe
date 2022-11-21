@@ -1,4 +1,4 @@
-# Tic-Tac-Toe
+# Tic-Tac-Toe- Fullstack Academy
 As users playing a two player game we want to:
 
 1.Enter our names and have them displayed
