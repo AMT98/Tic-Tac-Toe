@@ -384,3 +384,5 @@ function scoreReset(){
     }
 }
 resetScore.addEventListener('click', scoreReset)
+
+// Redo the project in react with components
