@@ -384,4 +384,4 @@ function scoreReset(){
     }
 }
 resetScore.addEventListener('click', scoreReset)
-// .
+
